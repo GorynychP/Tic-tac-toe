@@ -1,7 +1,21 @@
 import { useState } from 'react';
 import './App.css';
+// import { MyField } from './components';
+// import {squares, winCombinations} from './constants'
+// import {
+// 	clear,
+// 	btnResetScore,
+// 	// handleClick,
+// 	// winer
+// } from './handlers'
 
 function App() {
+
+	const [player, setPlayer] = useState('X');
+	const [cells, setCells] = useState(Array(9).fill(''));
+	const [scoreX, setScoreX] = useState(0);
+	const [scoreO, setScoreO] = useState(0);
+
 	const squares = [
 		{ id: 0 },
 		{ id: 1 },
@@ -13,10 +27,6 @@ function App() {
 		{ id: 7 },
 		{ id: 8 },
 	];
-	const [player, setPlayer] = useState('X');
-	const [cells, setCells] = useState(Array(9).fill(''));
-	const [scoreX, setScoreX] = useState(0);
-	const [scoreO, setScoreO] = useState(0);
 
 	const handleClick = (num) => {
 		let square = [...cells];
@@ -76,7 +86,7 @@ function App() {
 		setScoreO(0);
 	};
 
-	const Cell = ({ num }) => {
+	const MyField = ({ num }) => {
 		const cell = cells[num];
 		return (
 			<button onClick={() => handleClick(num)} style={{ color: cell.color }}>
@@ -89,7 +99,7 @@ function App() {
 		setCells(Array(9).fill(''));
 		setPlayer('X');
 	};
-
+	
 	return (
 		<div className="App">
 			<div className="container">
@@ -99,15 +109,17 @@ function App() {
 					<div className='plair-score'>
 						Player X: {scoreX}; Player O: {scoreO}
 					</div>
-					<button className='btn-reset' onClick={btnResetScore}>Reset</button>
+					<button className='btn-reset' onClick={btnResetScore()}>Reset</button>
 				</div>
 
 				<div className="square-container">
 					{squares.map((s) => (
-						<Cell num={s.id} key={s.id} />
+						<MyField  
+						num={s.id} 
+						key={s.id} />
 					))}
 				</div>
-				<button onClick={clear} className="btn-clear">
+				<button onClick={clear()} className="btn-clear">
 					Clear
 				</button>
 			</div>
