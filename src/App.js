@@ -1,13 +1,17 @@
 import { useState } from 'react';
 import './App.css';
-// import { MyField } from './components';
-// import {squares, winCombinations} from './constants'
-// import {
-// 	clear,
-// 	btnResetScore,
-// 	// handleClick,
-// 	// winer
-// } from './handlers'
+import { MyField } from './components';
+import {squares} from './constants'
+import {
+	checkDraw,
+	checkWin,
+	clear,
+	handleClick,
+	btnResetScore,
+	winer
+	// handleClick,
+	// winer
+} from './handlers'
 
 function App() {
 
@@ -16,89 +20,89 @@ function App() {
 	const [scoreX, setScoreX] = useState(0);
 	const [scoreO, setScoreO] = useState(0);
 
-	const squares = [
-		{ id: 0 },
-		{ id: 1 },
-		{ id: 2 },
-		{ id: 3 },
-		{ id: 4 },
-		{ id: 5 },
-		{ id: 6 },
-		{ id: 7 },
-		{ id: 8 },
-	];
+	// const squares = [
+	// 	{ id: 0 },
+	// 	{ id: 1 },
+	// 	{ id: 2 },
+	// 	{ id: 3 },
+	// 	{ id: 4 },
+	// 	{ id: 5 },
+	// 	{ id: 6 },
+	// 	{ id: 7 },
+	// 	{ id: 8 },
+	// ];
 
-	const handleClick = (num) => {
-		let square = [...cells];
-		if (cells[num] !== '') {
-			return;
-		}
-		if (player === 'X winner' || player === 'O winner') {
-			return;
-		}
-		if (player === 'X') {
-			square[num] = { value: 'X', color: 'red' };
-			setPlayer('O');
-		} else {
-			square[num] = { value: 'O', color: 'blue' };
-			setPlayer('X');
-		}
-		setCells(square);
-		winer(square);
-	};
+	// const handleClick = (num) => {
+	// 	let square = [...cells];
+	// 	if (cells[num] !== '') {
+	// 		return;
+	// 	}
+	// 	if (player === 'X winner' || player === 'O winner') {
+	// 		return;
+	// 	}
+	// 	if (player === 'X') {
+	// 		square[num] = { value: 'X', color: 'red' };
+	// 		setPlayer('O');
+	// 	} else {
+	// 		square[num] = { value: 'O', color: 'blue' };
+	// 		setPlayer('X');
+	// 	}
+	// 	setCells(square);
+	// 	winer(square);
+	// };
 
-	const winCombinations = [
-		[0, 1, 2],
-		[3, 4, 5],
-		[6, 7, 8],
-		[0, 3, 6],
-		[1, 4, 7],
-		[2, 5, 8],
-		[0, 4, 8],
-		[2, 4, 6],
-	];
+	// const winCombinations = [
+	// 	[0, 1, 2],
+	// 	[3, 4, 5],
+	// 	[6, 7, 8],
+	// 	[0, 3, 6],
+	// 	[1, 4, 7],
+	// 	[2, 5, 8],
+	// 	[0, 4, 8],
+	// 	[2, 4, 6],
+	// ];
 
-	const checkWin = (arrCells, player) => {
-		return winCombinations.some((check) => {
-			return check.every((index) => arrCells[index].value === player);
-		});
-	};
-	const checkDraw = (arrCells) => {
-		return arrCells.every((cell) => cell !== '');
-	};
-	const winer = (arrCells) => {
-		if (checkWin(arrCells, player)) {
-			if (player === 'X') {
-				setPlayer('X winner');
-				setScoreX(scoreX + 1);
-			} else {
-				setPlayer('O winner');
-				setScoreO(scoreO + 1);
-			}
-		}
-		if (checkDraw(arrCells) && !checkWin(arrCells, player)) {
-			setPlayer('Draw game');
-		}
-	};
+	// const checkWin = (arrCells, player) => {
+	// 	return winCombinations.some((check) => {
+	// 		return check.every((index) => arrCells[index].value === player);
+	// 	});
+	// };
+	// const checkDraw = (arrCells) => {
+	// 	return arrCells.every((cell) => cell !== '');
+	// };
+	// const winer = (arrCells) => {
+	// 	if (checkWin(arrCells, player)) {
+	// 		if (player === 'X') {
+	// 			setPlayer('X winner');
+	// 			setScoreX(scoreX + 1);
+	// 		} else {
+	// 			setPlayer('O winner');
+	// 			setScoreO(scoreO + 1);
+	// 		}
+	// 	}
+	// 	if (checkDraw(arrCells) && !checkWin(arrCells, player)) {
+	// 		setPlayer('Draw game');
+	// 	}
+	// };
 	
-	const btnResetScore = () => {
-		setScoreX(0);
-		setScoreO(0);
-	};
+	// const btnResetScore = () => {
+	// 	setScoreX(0);
+	// 	setScoreO(0);
+	// };
 
-	const MyField = ({ num }) => {
-		const cell = cells[num];
-		return (
-			<button onClick={() => handleClick(num)} style={{ color: cell.color }}>
-				{cell.value}
-			</button>
-		);
-	};
+	// const MyField = ({ num }) => {
+	// 	const cell = cells[num];
+	// 	return (
+	// 		<button onClick={() => handleClick(num)} style={{ color: cell.color }}>
+	// 			{cell.value}
+	// 		</button>
+	// 	);
+	// };
 
-	const clear = () => {
-		setCells(Array(9).fill(''));
-		setPlayer('X');
-	};
+	// const clear = () => {
+	// 	setCells(Array(9).fill(''));
+	// 	setPlayer('X');
+	// };
 	
 	return (
 		<div className="App">
@@ -109,17 +113,25 @@ function App() {
 					<div className='plair-score'>
 						Player X: {scoreX}; Player O: {scoreO}
 					</div>
-					<button className='btn-reset' onClick={btnResetScore()}>Reset</button>
+					<button className='btn-reset' onClick={() => btnResetScore(setScoreX, setScoreO)}>Reset</button>
 				</div>
 
 				<div className="square-container">
 					{squares.map((s) => (
 						<MyField  
+						cells={cells} 
 						num={s.id} 
+						player={player}
+						setPlayer={setPlayer}
+						setCells={setCells}
+						scoreX={scoreX}
+						scoreO={scoreO}
+						setScoreX={setScoreX}
+						setScoreO={setScoreO}
 						key={s.id} />
 					))}
 				</div>
-				<button onClick={clear()} className="btn-clear">
+				<button onClick={() => clear(setCells, setPlayer)} className="btn-clear">
 					Clear
 				</button>
 			</div>

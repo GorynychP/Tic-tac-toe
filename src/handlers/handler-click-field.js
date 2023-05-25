@@ -1,6 +1,16 @@
-// import { winer } from  './handler-winer'
+import { winer } from  './handler-winer'
 
-export const handleClick = (num, cells, player) => {
+export const handleClick = (
+    num, 
+    cells, 
+    player,
+    setPlayer,
+    setCells,
+    scoreX,
+    scoreO,
+    setScoreX,
+    setScoreO
+    ) => {
     let square = [...cells];
     if (cells[num] !== '') {
         return;
@@ -10,19 +20,19 @@ export const handleClick = (num, cells, player) => {
     }
     if (player === 'X') {
         square[num] = { value: 'X', color: 'red' };
-        // setPlayer('O');
+        setPlayer('O');
     } else {
         square[num] = { value: 'O', color: 'blue' };
-        // setPlayer('X');
+        setPlayer('X');
     }
-    // setCells(square);
-    // winer(
-    //     square, 
-    //     player, 
-    //     scoreX, 
-    //     scoreO, 
-    //     setPlayer, 
-    //     setScoreX, 
-    //     setScoreO 
-    //     );
+    setCells(square);
+    winer(
+        square, 
+        player, 
+        scoreX, 
+        scoreO, 
+        setPlayer, 
+        setScoreX, 
+        setScoreO 
+        );
 };
