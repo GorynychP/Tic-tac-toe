@@ -1,7 +1,7 @@
 import { checkDraw, checkWin } from "../handlers";
 
 export const winer = (
-    square, 
+    updatedCells, 
     player, 
     scoreX, 
     scoreO, 
@@ -9,7 +9,7 @@ export const winer = (
     setScoreX, 
     setScoreO
     ) => {
-    if (checkWin(square, player)) {
+    if (checkWin(updatedCells, player)) {
         if (player === 'X') {
             setPlayer('X winner');
             setScoreX(scoreX + 1);
@@ -18,7 +18,7 @@ export const winer = (
             setScoreO(scoreO + 1);
         }
     }
-    if (checkDraw(square) && !checkWin(square, player)) {
+    if (checkDraw(updatedCells) && !checkWin(updatedCells, player)) {
         setPlayer('Draw game');
     }
 };
