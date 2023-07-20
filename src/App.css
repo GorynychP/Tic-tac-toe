@@ -32,7 +32,7 @@
 	margin: 20px;
 }
 
-.player-score{
+.player-score {
 	font-size: 16px;
 	font-family: 'Arial', sans-serif;
 	color: #eeeeee;
@@ -89,9 +89,10 @@ button {
 	width: 100%;
 	margin-top: 300px;
 	text-align: center;
-	animation: fly 2s ease-in-out infinite;
-	animation-direction: alternate;
-	animation-timing-function: cubic-bezier;
+	animation: opacityAnim 2s ease-in-out 1;
+	/* animation: fly 2s ease-in-out infinite; */
+	/* animation-direction: alternate;
+	animation-timing-function: cubic-bezier; */
 }
 
 .h1 {
@@ -100,15 +101,33 @@ button {
 	font-style: bold;
 	font-family: Arial;
 	text-align: center;
-	animation: opacityAnim 2s ease-in-out infinite;
-	animation-direction: alternate;
-	animation-timing-function: cubic-bezier;
+	/* animation: opacityAnim 2s ease-in-out infinite; */
+	/* animation-direction: alternate;
+	animation-timing-function: cubic-bezier; */
+}
+
+.start-game {
+	margin: 20px;
+	width: 200px;
+	height: 80px;
+	border-radius: 30px;
+	appearance: none;
+	border: 2px solid rgb(0, 0, 0);
+	outline: none;
+	background-color: white;
+	font-size: 30px;
+	font-weight: bold;
+	cursor: pointer;
+}
+.start-game:hover {
+	background-color: rgb(236, 55, 55);
+	color: aqua;
 }
 @keyframes opacityAnim {
 	from {
 		opacity: 0;
 	}
-	
+
 	to {
 		opacity: 1;
 	}
@@ -118,8 +137,8 @@ button {
 	from {
 		opacity: 0;
 	}
-	
+
 	to {
-	opacity: 1;
-}
+		opacity: 1;
+	}
 }

@@ -1,2 +1,3 @@
-export * from './MyField'
-export * from './welcomeMessage'
+export * from './MyField';
+export * from './WelcomeMessage';
+export * from './InfoPanel.jsx';
