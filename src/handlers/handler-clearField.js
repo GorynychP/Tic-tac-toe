@@ -1,7 +1,6 @@
-import { store } from '../store/store';
+import { dispatch } from '../store/store';
 
-export const clearField = (setCells /*setPlayer*/) => {
+export const clearField = (setCells) => {
 	setCells(Array(9).fill(''));
-	store.dispatch({ type: 'SET_CURRENT_PLAYER', payload: 'X' });
-	// setPlayer('X');
+	dispatch('SET_CURRENT_PLAYER', 'X');
 };

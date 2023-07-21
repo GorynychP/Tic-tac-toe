@@ -1,16 +1,8 @@
 import React from 'react';
 import { store } from '../store/store';
 
-export const InfoPanel = ({
-	scoreX,
-	scoreO,
-	resetScore,
-	setScoreX,
-	setScoreO,
-	setCells,
-	setPlayer,
-}) => {
-	const { player } = store.getState();
+export const InfoPanel = ({ resetScore, setCells }) => {
+	const { player, scoreX, scoreO } = store.getState();
 	const playerBackgroundColor = player.includes('winner') ? 'green' : '#a02222';
 	return (
 		<>
@@ -21,10 +13,7 @@ export const InfoPanel = ({
 				<div className="player-score">
 					Player X: {scoreX}; Player O: {scoreO}
 				</div>
-				<button
-					className="btn-reset"
-					onClick={() => resetScore(setScoreX, setScoreO, setCells, setPlayer)}
-				>
+				<button className="btn-reset" onClick={() => resetScore(setCells)}>
 					Reset
 				</button>
 			</div>

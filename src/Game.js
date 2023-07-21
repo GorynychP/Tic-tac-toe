@@ -5,10 +5,7 @@ import { squares } from './constants';
 import { resetScore, clearField } from './handlers';
 function Game() {
 	const [showWelcomeMessage, setShowWelcomeMessage] = useState(true);
-	// const [player, setPlayer] = useState('X');
 	const [cells, setCells] = useState(Array(9).fill(''));
-	// const [scoreX, setScoreX] = useState(0);
-	// const [scoreO, setScoreO] = useState(0);
 	return (
 		<div className="App">
 			{showWelcomeMessage ? (
@@ -16,34 +13,19 @@ function Game() {
 			) : (
 				<>
 					<div className="container">
-						<InfoPanel
-							// player={player}
-							// setPlayer={setPlayer}
-							// scoreX={scoreX}
-							// scoreO={scoreO}
-							resetScore={resetScore}
-							// setScoreX={setScoreX}
-							// setScoreO={setScoreO}
-							setCells={setCells}
-						/>
+						<InfoPanel resetScore={resetScore} setCells={setCells} />
 						<div className="square-container">
 							{squares.map((s) => (
 								<MyField
-									cells={cells}
-									num={s.id}
-									// player={player}
-									// setPlayer={setPlayer}
-									setCells={setCells}
-									// scoreX={scoreX}
-									// scoreO={scoreO}
-									// setScoreX={setScoreX}
-									// setScoreO={setScoreO}
 									key={s.id}
+									num={s.id}
+									cells={cells}
+									setCells={setCells}
 								/>
 							))}
 						</div>
 						<button
-							onClick={() => clearField(setCells /*setPlayer*/)}
+							onClick={() => clearField(setCells)}
 							className="btn-clear"
 						>
 							Clear
