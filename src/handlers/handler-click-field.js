@@ -2,7 +2,6 @@ import { winer } from './handler-winer';
 import clickX from '../audio/click-XX.mp3';
 import clickO from '../audio/click-O.mp3';
 import { dispatch, store } from '../store/store';
-
 export const handleClickField = (cells, num, setCells) => {
 	const { player } = store.getState();
 

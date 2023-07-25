@@ -1,5 +1,4 @@
 import { handleClickField } from '../handlers';
-
 export const MyField = ({ cells, num, setCells }) => {
 	const cell = cells[num];
 	return (

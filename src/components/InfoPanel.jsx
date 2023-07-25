@@ -1,8 +1,10 @@
 import React from 'react';
-import { store } from '../store/store';
+import { useSelector } from 'react-redux';
 
 export const InfoPanel = ({ resetScore, setCells }) => {
-	const { player, scoreX, scoreO } = store.getState();
+	const player = useSelector((state) => state.player);
+	const scoreX = useSelector((state) => state.scoreX);
+	const scoreO = useSelector((state) => state.scoreO);
 	const playerBackgroundColor = player.includes('winner') ? 'green' : '#a02222';
 	return (
 		<>
