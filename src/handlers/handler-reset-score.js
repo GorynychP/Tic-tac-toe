@@ -1,7 +1,7 @@
-import { dispatch } from '../store/store';
+import { actionRestartGame } from '../actions/actionCreators';
 import { clearField } from './handler-clearField';
 
-export const resetScore = (setCells) => {
-	dispatch('RESTART_GAME');
-	clearField(setCells);
+export const resetScore = (setCells, dispatch) => {
+	dispatch(actionRestartGame());
+	clearField(setCells, dispatch);
 };

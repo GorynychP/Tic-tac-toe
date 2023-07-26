@@ -1,6 +1,6 @@
-import { dispatch } from '../store/store';
+import { actionSetCurrentPlayer } from '../actions/actionCreators';
 
-export const clearField = (setCells) => {
+export const clearField = (setCells, dispatch) => {
 	setCells(Array(9).fill(''));
-	dispatch('SET_CURRENT_PLAYER', 'X');
+	dispatch(actionSetCurrentPlayer('X'));
 };

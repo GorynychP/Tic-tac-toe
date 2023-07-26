@@ -3,9 +3,11 @@ import './App.css';
 import { InfoPanel, MyField, WelcomeMessage } from './components';
 import { squares } from './constants';
 import { resetScore, clearField } from './handlers';
+import { useDispatch } from 'react-redux';
 function Game() {
 	const [showWelcomeMessage, setShowWelcomeMessage] = useState(true);
 	const [cells, setCells] = useState(Array(9).fill(''));
+	const dispatch = useDispatch();
 	return (
 		<div className="App">
 			{showWelcomeMessage ? (
@@ -25,7 +27,7 @@ function Game() {
 							))}
 						</div>
 						<button
-							onClick={() => clearField(setCells)}
+							onClick={() => clearField(setCells, dispatch)}
 							className="btn-clear"
 						>
 							Clear

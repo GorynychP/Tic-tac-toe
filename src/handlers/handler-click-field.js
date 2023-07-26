@@ -1,10 +1,8 @@
 import { winer } from './handler-winer';
 import clickX from '../audio/click-XX.mp3';
 import clickO from '../audio/click-O.mp3';
-import { dispatch, store } from '../store/store';
-export const handleClickField = (cells, num, setCells) => {
-	const { player } = store.getState();
-
+import { actionSetCurrentPlayer } from '../actions/actionCreators';
+export const handleClickField = (cells, num, setCells, player, dispatch) => {
 	const audioX = new Audio(clickX);
 	const audioO = new Audio(clickO);
 	audioX.volume = 0.2;
@@ -21,13 +19,13 @@ export const handleClickField = (cells, num, setCells) => {
 	if (player === 'X') {
 		updatedCells[num] = { value: 'X', color: 'red' };
 		audioX.play();
-		dispatch('SET_CURRENT_PLAYER', 'O');
+		dispatch(actionSetCurrentPlayer('O'));
 	} else {
 		updatedCells[num] = { value: 'O', color: 'blue' };
 		audioO.play();
-		dispatch('SET_CURRENT_PLAYER', 'X');
+		dispatch(actionSetCurrentPlayer('X'));
 	}
 
 	setCells(updatedCells);
-	winer(updatedCells, player);
+	winer(updatedCells, player, dispatch);
 };

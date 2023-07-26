@@ -1,17 +1,21 @@
+import {
+	actionSetCurrentPlayer,
+	actionSetScoreOPlayer,
+	actionSetScoreXPlayer,
+} from '../actions/actionCreators';
 import { checkDraw, checkWin } from '../handlers';
-import { dispatch } from '../store/store';
 
-export const winer = (updatedCells, player) => {
+export const winer = (updatedCells, player, dispatch) => {
 	if (checkWin(updatedCells, player)) {
 		if (player === 'X') {
-			dispatch('SET_CURRENT_PLAYER', 'X winner');
-			dispatch('SET_SCORE_X_PLAYER');
+			dispatch(actionSetCurrentPlayer('X winner'));
+			dispatch(actionSetScoreXPlayer());
 		} else {
-			dispatch('SET_CURRENT_PLAYER', 'O winner');
-			dispatch('SET_SCORE_O_PLAYER');
+			dispatch(actionSetCurrentPlayer('O winner'));
+			dispatch(actionSetScoreOPlayer());
 		}
 	}
 	if (checkDraw(updatedCells) && !checkWin(updatedCells, player)) {
-		dispatch('SET_CURRENT_PLAYER', 'Draw game');
+		dispatch(actionSetCurrentPlayer('Draw game'));
 	}
 };
