@@ -2,12 +2,11 @@ import { winer } from './handler-winer';
 import clickX from '../audio/click-XX.mp3';
 import clickO from '../audio/click-O.mp3';
 import { actionSetCurrentPlayer } from '../actions/actionCreators';
-export const handleClickField = (cells, num, setCells, player, dispatch) => {
+export const handleClickField = ({ cells, num, setCells, player, dispatch }) => {
 	const audioX = new Audio(clickX);
 	const audioO = new Audio(clickO);
 	audioX.volume = 0.2;
 	audioO.volume = 0.3;
-
 	let updatedCells = [...cells];
 
 	if (cells[num] !== '') {

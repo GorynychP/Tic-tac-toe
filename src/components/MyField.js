@@ -1,15 +1,18 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 import { handleClickField } from '../handlers';
-export const MyField = ({ cells, num, setCells }) => {
-	const player = useSelector((state) => state.player);
-	const dispatch = useDispatch();
-	const onClickField = () => {
-		handleClickField(cells, num, setCells, player, dispatch);
+import { Component } from 'react';
+class MyFieldContainer extends Component {
+	onClickField = () => {
+		handleClickField(this.props);
 	};
-	const cell = cells[num];
-	return (
-		<button onClick={onClickField} style={{ color: cell.color }}>
-			{cell.value}
-		</button>
-	);
-};
+	render() {
+		const cell = this.props.cells[this.props.num];
+		return (
+			<button onClick={this.onClickField} style={{ color: cell.color }}>
+				{cell.value}
+			</button>
+		);
+	}
+}
+const mapStateToProps = (state) => ({ player: state.player });
+export const MyField = connect(mapStateToProps)(MyFieldContainer);
