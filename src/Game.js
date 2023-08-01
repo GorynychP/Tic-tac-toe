@@ -10,8 +10,8 @@ class GameContainer extends Component {
 		super(props);
 		this.state = { cells: Array(9).fill(''), showWelcomeMessage: true };
 	}
-	setShowWelcomeMessage = (bullion) => {
-		this.setState({ showWelcomeMessage: bullion });
+	setShowWelcomeMessage = (boolean) => {
+		this.setState({ showWelcomeMessage: boolean });
 	};
 	setCells = (updatedCells) => {
 		this.setState({ cells: updatedCells });
